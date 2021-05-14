@@ -63,7 +63,10 @@ export default class TimetableApp extends React.Component {
           searchbarModuleCode: "",
           searchbarPlaceholder: "Loading...",
         })
-        const request = await axios.get(`${URI}/2020/2/${searchbarModuleCode}`)
+        // Hardcoded year/semester...
+        const request = await axios.get(
+          `${URI}/${this.props.semester}/${searchbarModuleCode}`
+        )
         this.setState({ searchbarPlaceholder: "Enter a module code!" })
         const { moduleInfo, indexes, classes } = request.data
         const moduleCode = searchbarModuleCode
